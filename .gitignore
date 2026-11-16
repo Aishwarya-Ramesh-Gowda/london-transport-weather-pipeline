@@ -221,3 +221,6 @@ __marimo__/
 .env
 .env
 .venv/
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/

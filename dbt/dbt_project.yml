@@ -1,0 +1,13 @@
+name: transport
+version: "1.0.0"
+config-version: 2
+profile: transport
+
+model-paths: ["models"]
+
+models:
+  transport:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
