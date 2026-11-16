@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_line
+    columns:
+      - name: line_id
+        tests: [unique, not_null]
+
+  - name: dim_weather_condition
+    columns:
+      - name: weather_code
+        tests: [unique, not_null]
+
+  - name: fct_line_status_hourly
+    columns:
+      - name: line_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_line')
+              field: line_id
+      - name: snapshot_hour
+        tests: [not_null]
+      - name: is_disrupted
+        tests: [not_null]

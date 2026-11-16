@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_tfl_line_status
+    columns:
+      - name: line_id
+        tests: [not_null]
+      - name: status_severity
+        tests: [not_null]
+
+  - name: stg_weather_hourly
+    columns:
+      - name: observation_time
+        tests: [unique, not_null]

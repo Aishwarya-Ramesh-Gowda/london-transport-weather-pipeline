@@ -5,4 +5,12 @@ sources:
     schema: raw
     tables:
       - name: tfl_line_status
+        loaded_at_field: ingested_at
+        freshness:
+          warn_after: {count: 3, period: hour}
+          error_after: {count: 12, period: hour}
       - name: weather_hourly
+        loaded_at_field: ingested_at
+        freshness:
+          warn_after: {count: 3, period: hour}
+          error_after: {count: 12, period: hour}
