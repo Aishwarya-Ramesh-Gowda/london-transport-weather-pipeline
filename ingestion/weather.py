@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import requests
 
@@ -43,7 +43,7 @@ def load(hourly):
     count = 0
     with get_conn() as conn, conn.cursor() as cur:
         for t, temp, rain, wind, code in rows:
-            ts = datetime.fromisoformat(t).replace(tzinfo=timezone.utc)
+            ts = datetime.fromisoformat(t).replace(tzinfo=UTC)
             cur.execute(sql, (ts, temp, rain, wind, code))
             count += 1
     return count

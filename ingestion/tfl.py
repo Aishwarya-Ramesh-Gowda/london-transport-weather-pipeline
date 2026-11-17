@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import requests
 from psycopg2.extras import Json
@@ -33,7 +33,7 @@ def load(lines, snapshot_hour):
 
 
 def run():
-    snapshot_hour = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    snapshot_hour = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
     lines = fetch_status()
     n = load(lines, snapshot_hour)
     print(f"TfL: loaded {n} lines for {snapshot_hour.isoformat()}")
